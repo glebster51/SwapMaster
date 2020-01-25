@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="\7f1d0ca9" t="IncludeRecursive" />
+    <e p="\app" t="IncludeRecursive" />
+    <e p="C:\Users\Администратор\.Rider2018.2\config\plugins\intellij-emmylua\lib\intellij-emmylua-1.3.0.99-IDEA182.jar!\std\Lua53" t="IncludeRecursive" />
+    <e p="C:\Users\Администратор\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Администратор\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_SwapMaster.2145346300.00" t="ExcludeRecursive" />
+    <e p="D:\UnityProjects\SwapMaster\SwapMaster" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="CrystalState.cs" t="Include" />
+        <e p="SimpleAI.cs" t="Include" />
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="SwapMaster.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
