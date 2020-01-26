@@ -13,6 +13,7 @@
           <e p="Script" t="Include">
             <e p="ArrowSkin.cs" t="Include" />
             <e p="CrystalState.cs" t="Include" />
+            <e p="EnemySpawner.cs" t="Include" />
             <e p="HorizontalGrider.cs" t="Include" />
             <e p="SimpleAI.cs" t="Include" />
           </e>
