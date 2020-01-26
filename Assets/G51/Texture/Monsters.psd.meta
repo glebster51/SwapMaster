@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: 53de0fe16c402fa469a18109b9eeceb4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4608048447754632782
+    second: Monsters_0
+  - first:
+      213: 7004475837440150029
+    second: Monsters_1
+  - first:
+      213: -7181651816591611541
+    second: Monsters_2
+  - first:
+      213: -8475454869906208948
+    second: Monsters_3
+  - first:
+      213: 2340025546474775938
+    second: Monsters_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -108,7 +123,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Monsters_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 279
+        width: 146
+        height: 141
+      alignment: 9
+      pivot: {x: 0.4653012, y: 0.31316793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4ed71c188db0b499746b6552f2e044
+      internalID: 4608048447754632782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monsters_1
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 289
+        width: 167
+        height: 118
+      alignment: 9
+      pivot: {x: 0.4969665, y: 0.42701516}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5944ee75ab65fb34caad7e17588f6ab0
+      internalID: 7004475837440150029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monsters_2
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 263
+        width: 198
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7687f044c52caa5408731c4e46340622
+      internalID: -7181651816591611541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monsters_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 39
+        width: 351
+        height: 213
+      alignment: 9
+      pivot: {x: 0.49855673, y: 0.36918715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e06912b1eeb85347bab63cdf98c6ac8
+      internalID: -8475454869906208948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monsters_4
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 19
+        width: 372
+        height: 209
+      alignment: 9
+      pivot: {x: 0.48910555, y: 0.5266635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f78f45dcb820d46a63fe536e9fb07c
+      internalID: 2340025546474775938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -120,7 +240,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
   spritePackingTag: 
-  pSDRemoveMatte: 0
+  pSDRemoveMatte: 1
   pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
