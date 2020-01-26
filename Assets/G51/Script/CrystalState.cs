@@ -30,6 +30,5 @@ public class CrystalState : MonoBehaviour
             else
                 sprites.Remove(s);
         }
-        
     }
 }

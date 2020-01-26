@@ -18,15 +18,22 @@ public class SimpleAI : MonoBehaviour
         InitialEnemy();
     }
 
+    // Инициализация
     void InitialEnemy()
     {
         for (int i = 0; i < swaps.Count; i++)
-            swaps[i] = (DirectionsSwap)Random.Range(0f, 4f);
+        {
+            DirectionsSwap d = (DirectionsSwap) Random.Range(0f, 4f);
+            crystals[i].GetComponent<ArrowSkin>().SetSkin(d);
+            swaps[i] = d;
+        }
+
         foreach (var crystal in crystals)
-            crystal.SetValue(0f);
+            crystal.SetValue(1f);
         SetProgress(0);
     }
 
+    // Назначить прогресс кристалику
     void SetProgress(int newValue)
     {
         progress = newValue;
@@ -75,11 +82,11 @@ public class SimpleAI : MonoBehaviour
         float t = 0f;
         while (t <= animationTime)
         {
-            cs.SetValue(t / animationTime);
+            cs.SetValue(1 - t / animationTime);
             t += Time.deltaTime;
             yield return null;
         }
-        cs.SetValue(1f);
+        cs.SetValue(0f);
     }
 
     void GoodClick()
@@ -98,7 +105,7 @@ public class SimpleAI : MonoBehaviour
         }
         SetProgress(0);
         foreach (var crystal in crystals)
-            crystal.SetValue(0f);
+            crystal.SetValue(1f);
     }
     
     // ========================================================
