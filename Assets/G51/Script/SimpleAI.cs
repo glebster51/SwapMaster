@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleAI : MonoBehaviour
 {
+    private bool alive;
     public List<DirectionsSwap> swaps;
     public List<CrystalState> crystals;
     private List<Coroutine> anims = new List<Coroutine>();
@@ -31,6 +32,7 @@ public class SimpleAI : MonoBehaviour
         foreach (var crystal in crystals)
             crystal.SetValue(1f);
         SetProgress(0);
+        alive = true;
     }
 
     // Назначить прогресс кристалику
@@ -43,16 +45,16 @@ public class SimpleAI : MonoBehaviour
 
     private void Update()
     {
-        if (GetInputs())
+        if (alive && GetInputs())
         {
             if (r)
-                TestDid(DirectionsSwap.Right);
+                TestDir(DirectionsSwap.Right);
             else if (u)
-                TestDid(DirectionsSwap.Up);
+                TestDir(DirectionsSwap.Up);
             else if (l)
-                TestDid(DirectionsSwap.Left);
+                TestDir(DirectionsSwap.Left);
             else if (d)
-                TestDid(DirectionsSwap.Down);
+                TestDir(DirectionsSwap.Down);
 
             if (progress >= swaps.Count)
                 Death();
@@ -62,11 +64,12 @@ public class SimpleAI : MonoBehaviour
 
     void Death()
     {
+        alive = false;
         Destroy(gameObject.gameObject, 1f);
         GetComponent<Animator>().SetBool("alive", false);
     }
     
-    void TestDid(DirectionsSwap dir)
+    void TestDir(DirectionsSwap dir)
     {
         if (swaps[progress] == dir)
             GoodClick();
