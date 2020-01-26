@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleAI : MonoBehaviour
 {
-    private bool alive;
+    public bool alive;
     public List<DirectionsSwap> swaps;
     public List<CrystalState> crystals;
     private List<Coroutine> anims = new List<Coroutine>();
@@ -67,6 +67,7 @@ public class SimpleAI : MonoBehaviour
         alive = false;
         Destroy(gameObject.gameObject, 1f);
         GetComponent<Animator>().SetBool("alive", false);
+        FindObjectOfType<EnemySpawner>().CounterAdd(swaps.Count);
     }
     
     void TestDir(DirectionsSwap dir)
