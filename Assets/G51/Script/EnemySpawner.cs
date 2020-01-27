@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     public float deathY;
     public GameObject deadScreen;
+
     private void Update()
     {
         for (int i = 0; i < spawned.Count; i++)
