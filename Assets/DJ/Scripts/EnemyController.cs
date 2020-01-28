@@ -12,8 +12,6 @@ public class EnemyController : SerializedMonoBehaviour
 
     [SerializeField] public Transform enemyContainer { get; private set; }
     [SerializeField] public LevelSettings levelSettings { get; private set; }
-    //debug
-    public int points;
 
     private List<Monster> monsters;
     private List<Monster> patternMonsters;
@@ -103,13 +101,13 @@ public class EnemyController : SerializedMonoBehaviour
                 float sum = 0;
                 foreach (WaveEnemy waveEnemy in wave.enemies)
                 {
-                    if (waveEnemy.realWeight <= rand)
+                    sum += waveEnemy.realWeight;
+                    if (rand <= sum)
                     {
                         Vector3 pos = new Vector3(Random.Range(-spawnPoint.x, spawnPoint.x), spawnPoint.y);
                         monsters.Add(Instantiate(waveEnemy.enemyPrefab, pos, Quaternion.identity, enemyContainer).GetComponent<Monster>());
                         break;
                     }
-                    sum += waveEnemy.realWeight;
                 }
                 yield return new WaitForSeconds(Random.Range(wave.waveTick.x, wave.waveTick.y));
             }

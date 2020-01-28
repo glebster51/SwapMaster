@@ -4,14 +4,14 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Level Settings")]
-public class LevelSettings : SerializedScriptableObject
+public class LevelSettings : ScriptableObject
 {
-    [SerializeField] public float delayBeforeWaves { get; private set; }
-    [SerializeField] public List<Wave> waves { get; private set; }
+    public float delayBeforeWaves;
+    public List<Wave> waves;
 }
 
 [System.Serializable]
-public sealed class Wave
+public class Wave
 {
     public Vector2 delayAfterWave;
     public Vector2 waveDuration;
@@ -21,7 +21,7 @@ public sealed class Wave
 }
 
 [System.Serializable]
-public sealed class WaveEnemy
+public class WaveEnemy
 {
     public GameObject enemyPrefab;
     public float weight;
