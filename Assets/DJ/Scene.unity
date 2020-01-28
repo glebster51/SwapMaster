@@ -673,8 +673,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764907020}
-  - component: {fileID: 1764907019}
   - component: {fileID: 1764907021}
+  - component: {fileID: 1764907019}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -689,26 +689,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764907018}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a2408c2a3034e488fa2a58d3ea1c34, type: 3}
+  m_Script: {fileID: 11500000, guid: d8cf0525d261bc64683b3b766af9df8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWeight: 9.17
-  timerRamge: {x: 2, y: 5}
-  enemys:
-  - {fileID: 5950423217185304334, guid: 0698450d18ddc414db39af52fc807a96, type: 3}
-  - {fileID: 4039143549195687132, guid: 0bb494079a6e431469510a2c0395018d, type: 3}
-  - {fileID: 9018045986670217130, guid: 769648d2f70d5714bb533f8c66dd856e, type: 3}
-  - {fileID: 7021516281631008456, guid: e063de2f550ea8c49a886a9264032da0, type: 3}
-  - {fileID: 6420453801409324839, guid: 6b1a4fcdea343fe4591730406d6f4b3d, type: 3}
-  - {fileID: 6420453801409324839, guid: 27a817b0e6bd2834cb0ae0271d2eb6a1, type: 3}
-  enemySpeed: 3.5
-  EnemySpeedMod: 0.05
-  deathY: -16.72
-  deadScreen: {fileID: 2067492390}
-  counter: {fileID: 1749475932}
-  count: 0
 --- !u!4 &1764907020
 Transform:
   m_ObjectHideFlags: 0
@@ -735,11 +720,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254d2dc584d639448b16bed67007ca5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: spawnPoint
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 4.59
+    - Name: 
+      Entry: 4
+      Data: 18.02
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: deathY
+      Entry: 4
+      Data: -18.2
   cd: 1
-  enemy: {fileID: 4039143549195687132, guid: 0bb494079a6e431469510a2c0395018d, type: 3}
+  enemies:
+  - {fileID: 5950423217185304334, guid: 0698450d18ddc414db39af52fc807a96, type: 3}
+  - {fileID: 4039143549195687132, guid: 0bb494079a6e431469510a2c0395018d, type: 3}
+  - {fileID: 9018045986670217130, guid: 769648d2f70d5714bb533f8c66dd856e, type: 3}
+  - {fileID: 7021516281631008456, guid: e063de2f550ea8c49a886a9264032da0, type: 3}
+  - {fileID: 6420453801409324839, guid: 6b1a4fcdea343fe4591730406d6f4b3d, type: 3}
+  - {fileID: 6420453801409324839, guid: 27a817b0e6bd2834cb0ae0271d2eb6a1, type: 3}
   pause: 0
   points: 0
-  spd: 3
 --- !u!1 &1819392597
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +766,7 @@ GameObject:
   - component: {fileID: 1819392599}
   - component: {fileID: 1819392598}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

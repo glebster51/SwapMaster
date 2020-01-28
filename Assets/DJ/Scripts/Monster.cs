@@ -8,6 +8,8 @@ public class Monster : SerializedMonoBehaviour
     [FoldoutGroup("Arrows"), SerializeField] public Transform arrowsContainer { get; protected set; }
     [FoldoutGroup("Arrows")] public float padding;
 
+    [SerializeField] public float moveSpeed { get; protected set; }
+
     public int progress { get; protected set; }
     public ArrowDirection nextDirection { get; protected set; }
 
@@ -21,7 +23,7 @@ public class Monster : SerializedMonoBehaviour
         anim = GetComponent<Animator>();
         arrows = arrowsContainer.GetComponentsInChildren<Arrow>(true);
         pattern = new ArrowDirection[arrows.Length];
-        ResetArrows();
+        ResetProgress();
         RandomizePattern();
     }
 
@@ -44,8 +46,10 @@ public class Monster : SerializedMonoBehaviour
         Destroy(gameObject, 1f);
     }
 
-    protected void ResetArrows()
+    public void ResetProgress()
     {
+        progress = 0;
+        nextDirection = pattern[0];
         foreach (var arrow in arrows)
             arrow.SetValue(1);
     }

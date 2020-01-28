@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5950423217157795048}
   m_Layer: 0
-  m_Name: Arrows
+  m_Name: Crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +205,9 @@ MonoBehaviour:
     - Name: arrowsContainer
       Entry: 10
       Data: 0
+    - Name: moveSpeed
+      Entry: 4
+      Data: 3
   padding: 0.8
 --- !u!95 &5950423217185304335
 Animator:

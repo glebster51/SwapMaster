@@ -210,53 +210,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125872401a056a644a17707cb716ed4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 4224659157833830799}
-    - {fileID: 4224659156323046966}
-    - {fileID: 4224659156108352101}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: changeAlphaSprites
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[UnityEngine.SpriteRenderer, UnityEngine.CoreModule]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: frontSprite
-      Entry: 10
-      Data: 0
-    - Name: backSprite
-      Entry: 10
-      Data: 1
-    - Name: glowSprite
-      Entry: 10
-      Data: 2
-    - Name: alpha
-      Entry: 4
-      Data: 1
-    - Name: direction
-      Entry: 3
-      Data: 0
   graphicsAsset: {fileID: 11400000, guid: e4a092ba7bc51c64ab52799381ba796c, type: 2}
+  changeAlphaSprites:
+  - {fileID: 4224659157833830799}
+  - {fileID: 4224659156108352101}
+  frontSprite: {fileID: 4224659157833830799}
+  backSprite: {fileID: 4224659156323046966}
+  glowSprite: {fileID: 4224659156108352101}
+  alpha: 1
+  direction: 0
 --- !u!1 &4224659157833830797
 GameObject:
   m_ObjectHideFlags: 0

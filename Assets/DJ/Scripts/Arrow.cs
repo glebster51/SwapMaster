@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class Arrow : SerializedMonoBehaviour
+public class Arrow : MonoBehaviour
 {
     [SerializeField] protected ArrowsGraphicsAsset graphicsAsset;
-    [SerializeField, ListDrawerSettings(AlwaysAddDefaultValue = true)] public List<SpriteRenderer> changeAlphaSprites { get; protected set; }
-    [SerializeField] public SpriteRenderer frontSprite { get; protected set; }
-    [SerializeField] public SpriteRenderer backSprite { get; protected set; }
-    [SerializeField] public SpriteRenderer glowSprite { get; protected set; }
-    [SerializeField, PropertyRange(0f, 1f)] public float alpha { get; protected set; }
-    [SerializeField] public ArrowDirection direction { get; protected set; }
+    [SerializeField, ListDrawerSettings(AlwaysAddDefaultValue = true)] public List<SpriteRenderer> changeAlphaSprites;
+    
+    public SpriteRenderer frontSprite;
+    public SpriteRenderer backSprite;
+    public SpriteRenderer glowSprite;
 
-    private float lastValue;
-    private ArrowDirection lastDirection;
+    [PropertyRange(0f, 1f)]
+    public float alpha;
+    public ArrowDirection direction;
+
+    protected float lastValue;
+    protected ArrowDirection lastDirection;
 
     public void AnimatePressed()
     {

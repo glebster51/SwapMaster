@@ -1,104 +1,113 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : SerializedMonoBehaviour
 {
+    public static EnemyController instance { get; private set; }
+
+    [SerializeField] public Vector2 spawnPoint { get; private set; }
+    [SerializeField] public float deathY { get; private set; }
+
+    //debug
     public float cd;
-    public GameObject enemy;
+    [ListDrawerSettings(AlwaysAddDefaultValue = true)]
+    public GameObject[] enemies;
     public bool pause;
     public int points;
-    public float spd;
 
     private List<Monster> monsters;
+    private List<Monster> patternMonsters;
 
     private void Start()
     {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(this);
+
         monsters = new List<Monster>();
+        patternMonsters = new List<Monster>();
         StartCoroutine(Spawn());
     }
 
-    private void Update()
+    public static void GetInput(ArrowDirection dir)
     {
-        foreach (var item in monsters)
+        List<Monster> remove = new List<Monster>();
+        bool monsterDied = false;
+
+        if (instance.patternMonsters.Count <= 0)
         {
-            item.transform.position += Vector3.down * spd * Time.deltaTime;
+            foreach (Monster item in instance.monsters)
+                instance.patternMonsters.Add(item);
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        foreach (Monster monster in instance.patternMonsters)
         {
-            List<Monster> m = monsters.FindAll(x => x.nextDirection == ArrowDirection.Left);
-            if (m.Count > 0)
+            if (monster.nextDirection == dir)
             {
-                foreach (var item in m)
+                if (monster.AddProgress())
                 {
-                    if (item.AddProgress())
-                    {
-                        monsters.Remove(item);
-                        item.Die();
-                        points++;
-                    }
+                    instance.monsters.Remove(monster);
+                    monsterDied = true;
+
+                    remove.Add(monster);
+                    monster.Die();
                 }
+            }
+            else
+            {
+                monster.ResetProgress();
+                remove.Add(monster);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (monsterDied)
         {
-            List<Monster> m = monsters.FindAll(x => x.nextDirection == ArrowDirection.Right);
-            if (m.Count > 0)
-            {
-                foreach (var item in m)
-                {
-                    if (item.AddProgress())
-                    {
-                        monsters.Remove(item);
-                        item.Die();
-                        points++;
-                    }
-                }
-            }
+            instance.patternMonsters = new List<Monster>();
+            foreach (Monster item in instance.monsters)
+                instance.patternMonsters.Add(item);
         }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (remove.Count > 0)
         {
-            List<Monster> m = monsters.FindAll(x => x.nextDirection == ArrowDirection.Up);
-            if (m.Count > 0)
-            {
-                foreach (var item in m)
-                {
-                    if (item.AddProgress())
-                    {
-                        monsters.Remove(item);
-                        item.Die();
-                        points++;
-                    }
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            List<Monster> m = monsters.FindAll(x => x.nextDirection == ArrowDirection.Down);
-            if (m.Count > 0)
-            {
-                foreach (var item in m)
-                {
-                    if (item.AddProgress())
-                    {
-                        monsters.Remove(item);
-                        item.Die();
-                        points++;
-                    }
-                }
-            }
+            foreach (Monster item in remove)
+                instance.patternMonsters.Remove(item);
         }
     }
 
+    //beta
     private IEnumerator Spawn()
     {
         while (!pause)
         {
             yield return new WaitForSeconds(cd);
-            monsters.Add(Instantiate(enemy, transform.position, Quaternion.identity).GetComponent<Monster>());
+            Vector3 pos = new Vector3(Random.Range(-spawnPoint.x, spawnPoint.x), spawnPoint.y);
+            GameObject prefab = enemies[Random.Range(0, enemies.Length)];
+            monsters.Add(Instantiate(prefab, pos, Quaternion.identity).GetComponent<Monster>());
         }
     }
+
+    private void Update()
+    {
+        foreach (var item in monsters)
+            item.transform.position += Vector3.down * item.moveSpeed * Time.deltaTime;
+
+        var dead = monsters.FindAll(x => x.transform.position.y <= deathY);
+        if (dead.Count > 0)
+        {
+            foreach (var item in dead)
+            {
+                monsters.Remove(item);
+                item.Die();
+            }
+        }
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(new Vector3(-spawnPoint.x, spawnPoint.y), spawnPoint);
+        Gizmos.DrawLine(new Vector3(-spawnPoint.x, deathY), new Vector3(spawnPoint.x, deathY));
+    }
+#endif
 }
