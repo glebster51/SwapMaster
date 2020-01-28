@@ -10,11 +10,9 @@ public class EnemyController : SerializedMonoBehaviour
     [SerializeField] public Vector2 spawnPoint { get; private set; }
     [SerializeField] public float deathY { get; private set; }
 
+    [SerializeField] public Transform enemyContainer { get; private set; }
+    [SerializeField] public LevelSettings levelSettings { get; private set; }
     //debug
-    public float cd;
-    [ListDrawerSettings(AlwaysAddDefaultValue = true)]
-    public GameObject[] enemies;
-    public bool pause;
     public int points;
 
     private List<Monster> monsters;
@@ -27,7 +25,7 @@ public class EnemyController : SerializedMonoBehaviour
 
         monsters = new List<Monster>();
         patternMonsters = new List<Monster>();
-        StartCoroutine(Spawn());
+        StartCoroutine(Spawner());
     }
 
     public static void GetInput(ArrowDirection dir)
@@ -74,16 +72,50 @@ public class EnemyController : SerializedMonoBehaviour
         }
     }
 
-    //beta
-    private IEnumerator Spawn()
+    //хуйня
+    private IEnumerator Spawner()
     {
-        while (!pause)
+        if (levelSettings == null) yield break;
+        if (levelSettings.waves == null) yield break;
+        if (levelSettings.waves.Count == 0) yield break;
+
+        yield return new WaitForSeconds(levelSettings.delayBeforeWaves);
+
+        float fullWeight = 0;
+        foreach (Wave wave in levelSettings.waves)
+            foreach (WaveEnemy waveEnemy in wave.enemies)
+                fullWeight += waveEnemy.weight;
+
+        fullWeight = 1 / fullWeight;
+
+        foreach (Wave wave in levelSettings.waves)
+            foreach (WaveEnemy waveEnemy in wave.enemies)
+                waveEnemy.realWeight = waveEnemy.weight * fullWeight;
+
+        int waveCount = levelSettings.waves.Count;
+        for (int i = 0; i < waveCount; i++)
         {
-            yield return new WaitForSeconds(cd);
-            Vector3 pos = new Vector3(Random.Range(-spawnPoint.x, spawnPoint.x), spawnPoint.y);
-            GameObject prefab = enemies[Random.Range(0, enemies.Length)];
-            monsters.Add(Instantiate(prefab, pos, Quaternion.identity).GetComponent<Monster>());
+            Wave wave = levelSettings.waves[i];
+            float endTime = Time.time + Random.Range(wave.waveDuration.x, wave.waveDuration.y);
+            while (Time.time < endTime)
+            {
+                float rand = Random.value;
+                float sum = 0;
+                foreach (WaveEnemy waveEnemy in wave.enemies)
+                {
+                    if (waveEnemy.realWeight <= rand)
+                    {
+                        Vector3 pos = new Vector3(Random.Range(-spawnPoint.x, spawnPoint.x), spawnPoint.y);
+                        monsters.Add(Instantiate(waveEnemy.enemyPrefab, pos, Quaternion.identity, enemyContainer).GetComponent<Monster>());
+                        break;
+                    }
+                    sum += waveEnemy.realWeight;
+                }
+                yield return new WaitForSeconds(Random.Range(wave.waveTick.x, wave.waveTick.y));
+            }
         }
+
+        Debug.Log("End of level");
     }
 
     private void Update()
@@ -97,6 +129,8 @@ public class EnemyController : SerializedMonoBehaviour
             foreach (var item in dead)
             {
                 monsters.Remove(item);
+                if (patternMonsters.Contains(item))
+                    patternMonsters.Remove(item);
                 item.Die();
             }
         }
