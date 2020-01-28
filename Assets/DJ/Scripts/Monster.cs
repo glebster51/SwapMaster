@@ -27,12 +27,13 @@ public class Monster : SerializedMonoBehaviour
 
     public bool AddProgress()
     {
+        arrows[progress].AnimatePressed();
+        anim.SetTrigger("GetDMG");
+
         progress++;
         if (progress >= pattern.Length)
             return true;
 
-        arrows[progress].AnimatePressed();
-        anim.SetTrigger("GetDMG");
         nextDirection = pattern[progress];
         return false;
     }
