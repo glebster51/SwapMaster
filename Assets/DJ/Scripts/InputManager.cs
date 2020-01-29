@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
 
     public static bool handleInput { get; private set; }
 
+    [SerializeField, Range(0, 10)] private float dragPercent;
     private Vector2 fp, lp;
     private float dragDistance;
 
@@ -16,7 +17,7 @@ public class InputManager : MonoBehaviour
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
 
-        dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
+        dragDistance = Screen.height * dragPercent / 100; //dragDistance is 10% height of the screen
     }
 
     private void Update()
@@ -76,14 +77,46 @@ public class InputManager : MonoBehaviour
                     }
                 }
             }
-
-            /*if (handleInput)
+#if UNITY_EDITOR
+            if (handleInput)
             {
-                if (Input.GetKeyDown(KeyCode.LeftArrow)) GameController.GetInput(ArrowDirection.Left);
-                if (Input.GetKeyDown(KeyCode.RightArrow)) GameController.GetInput(ArrowDirection.Right);
-                if (Input.GetKeyDown(KeyCode.UpArrow)) GameController.GetInput(ArrowDirection.Up);
-                if (Input.GetKeyDown(KeyCode.DownArrow)) GameController.GetInput(ArrowDirection.Down);
-            }*/
+                if (Input.GetMouseButtonDown(0))
+                {
+                    fp = Input.mousePosition;
+                    lp = Input.mousePosition;
+                }
+                else if (Input.GetMouseButton(0))
+                {
+                    lp = Input.mousePosition;
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    lp = Input.mousePosition;
+
+                    if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance)
+                    {
+                        if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
+                        {
+                            if ((lp.x > fp.x))
+                                GameController.GetInput(ArrowDirection.Right);
+                            else
+                                GameController.GetInput(ArrowDirection.Left);
+                        }
+                        else
+                        {
+                            if (lp.y > fp.y)
+                                GameController.GetInput(ArrowDirection.Up);
+                            else
+                                GameController.GetInput(ArrowDirection.Down);
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Tap");
+                    }
+                }
+            }
+#endif
         }
     }
 

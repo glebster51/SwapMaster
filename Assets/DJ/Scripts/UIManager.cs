@@ -21,6 +21,11 @@ public class UIManager : MonoBehaviour
         instance.deathScreen.gameObject.SetActive(true);
     }
 
+    public static void HideDeathScreen()
+    {
+        instance.deathScreen.gameObject.SetActive(false);
+    }
+
     public static void SetHealth(int amount)
     {
 

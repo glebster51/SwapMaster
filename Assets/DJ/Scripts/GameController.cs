@@ -19,22 +19,15 @@ public class GameController : SerializedMonoBehaviour
     private List<Monster> monsters;
     private List<Monster> patternMonsters;
     private int health;
+    private Coroutine spawner;
+    private Coroutine gamePauseRoutine;
 
     private void Start()
     {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
-        //debug debug 
-        GlobalSettings.levelSettings = debugSettings; //Debug debug
-        levelSettings = GlobalSettings.levelSettings;
-        if (levelSettings == null)
-            throw new System.Exception("Настройки где блять, мудила?");
-
-        monsters = new List<Monster>();
-        patternMonsters = new List<Monster>();
 
         LoadLevel();
-        StartCoroutine(Spawner());
     }
 
     public static void GetInput(ArrowDirection dir)
@@ -81,19 +74,44 @@ public class GameController : SerializedMonoBehaviour
         }
     }
 
-    private void LoadLevel()
+    public void LoadLevel()
     {
+        GameUnpause();
+        UIManager.HideDeathScreen();
+
+        //debug debug 
+        GlobalSettings.levelSettings = debugSettings;
+        //Debug debug
+
+        levelSettings = GlobalSettings.levelSettings;
+        if (levelSettings == null)
+            throw new System.Exception("Настройки где блять, мудила?");
+
+        if (monsters != null)
+            foreach (Monster monster in monsters)
+                monster.Die();
+
+        monsters = new List<Monster>();
+        patternMonsters = new List<Monster>();
+
         health = GlobalSettings.startHealth;
         UIManager.SetHealth(health);
+
+        if (spawner != null)
+            StopCoroutine(spawner);
+        spawner = StartCoroutine(Spawner());
 
         InputManager.EnableInput(true);
     }
 
     private IEnumerator Spawner()
     {
+        Debug.Log("spawner enabled");
         if (levelSettings == null) yield break;
         if (levelSettings.waves == null) yield break;
         if (levelSettings.waves.Count == 0) yield break;
+
+        Debug.Log("spawner checked");
 
         yield return new WaitForSeconds(levelSettings.delayBeforeWaves);
 
@@ -159,9 +177,18 @@ public class GameController : SerializedMonoBehaviour
         if (health <= 0)
         {
             InputManager.EnableInput(false);
-            StartCoroutine(GamePause());
+            if (gamePauseRoutine != null)
+                StopCoroutine(gamePauseRoutine);
+            gamePauseRoutine = StartCoroutine(GamePause());
             UIManager.ShowDeathScreen();
         }
+    }
+
+    private void GameUnpause()
+    {
+        if (gamePauseRoutine != null)
+            StopCoroutine(gamePauseRoutine);
+        Time.timeScale = 1;
     }
 
     private IEnumerator GamePause()
