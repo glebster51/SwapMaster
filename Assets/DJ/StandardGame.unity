@@ -863,7 +863,6 @@ MonoBehaviour:
     - Name: enemyContainer
       Entry: 10
       Data: 0
-  debugSettings: {fileID: 11400000, guid: 247e76825ca1eee43b36a1875c61c06d, type: 2}
 --- !u!1 &1819392597
 GameObject:
   m_ObjectHideFlags: 0
