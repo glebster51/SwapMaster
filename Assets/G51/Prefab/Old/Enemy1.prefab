@@ -128,10 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4364130466101022722}
-  - {fileID: 4364130464844174377}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!1 &4364130464604995686
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,10 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4364130464972675790}
-  - {fileID: 4364130466402528549}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!1 &4364130464645790958
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,10 +831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4364130464875819139}
-  - {fileID: 4364130465409289587}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!1 &4364130464989142311
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c09688a3fb02c54fb1abbc135063039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alive: 0
   swaps: 000000000000000000000000000000000000000001000000
   crystals:
   - {fileID: 4364130464477270679}
@@ -1452,10 +1447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4364130465143701413}
-  - {fileID: 4364130464858767347}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!1 &4364130465409289586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,10 +1659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4364130465270530696}
-  - {fileID: 4364130465170524568}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!1 &4364130465601157205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,10 +1789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4364130464989142297}
-  - {fileID: 4364130466123226508}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!1 &4364130466101022720
 GameObject:
   m_ObjectHideFlags: 0

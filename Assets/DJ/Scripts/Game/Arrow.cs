@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] protected ArrowsGraphicsAsset graphicsAsset;
-    [SerializeField, ListDrawerSettings(AlwaysAddDefaultValue = true)] public List<SpriteRenderer> changeAlphaSprites;
+    [SerializeField, ListDrawerSettings(AlwaysAddDefaultValue = true)] protected List<SpriteRenderer> changeAlphaSprites;
     
     public SpriteRenderer frontSprite;
     public SpriteRenderer backSprite;
@@ -15,9 +15,6 @@ public class Arrow : MonoBehaviour
     [PropertyRange(0f, 1f)]
     public float alpha;
     public ArrowDirection direction;
-
-    protected float lastValue;
-    protected ArrowDirection lastDirection;
 
     public void AnimatePressed()
     {
@@ -30,7 +27,6 @@ public class Arrow : MonoBehaviour
             return;
 
         alpha = val;
-        lastValue = val;
 
         for (int i = 0; i < changeAlphaSprites.Count; i++)
         {
@@ -52,7 +48,6 @@ public class Arrow : MonoBehaviour
             dir = (ArrowDirection)Random.Range(0, (int)ArrowDirection.Random);
 
         direction = dir;
-        lastDirection = dir;
 
         ArrowGraphicsSettings settings = graphicsAsset.settings[dir];
 
@@ -79,10 +74,20 @@ public class Arrow : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    protected float lastAlpha;
+    protected ArrowDirection lastDirection;
     private void OnValidate()
     {
-        if (lastValue != alpha) SetValue(alpha);
-        if (lastDirection != direction) SetDirection(direction);
+        if (lastAlpha != alpha)
+        {
+            lastAlpha = alpha;
+            SetValue(alpha);
+        }
+        if (lastDirection != direction)
+        {
+            lastDirection = direction;
+            SetDirection(direction);
+        }
     }
 #endif
 }

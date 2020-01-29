@@ -6,7 +6,7 @@ public class SimpleAI : MonoBehaviour
 {
     public bool alive;
     public List<DirectionsSwap> swaps;
-    public List<CrystalState> crystals;
+    public List<WorldmapLevelCrystal> crystals;
     private List<Coroutine> anims = new List<Coroutine>();
     public enum DirectionsSwap{Right, Up, Left, Down}
     public Transform arrow;
@@ -78,7 +78,7 @@ public class SimpleAI : MonoBehaviour
             MissClick();
     }
    
-    IEnumerator ProgressAnimator(CrystalState cs, float animationTime)
+    IEnumerator ProgressAnimator(WorldmapLevelCrystal cs, float animationTime)
     {
         SetProgress(progress + 1);
         if (swaps.Count > progress)

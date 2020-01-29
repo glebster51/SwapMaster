@@ -3,6 +3,8 @@
     public static LevelSettings levelSettings;
     public static int money;
     public static int startHealth;
+    public static int lastLevel;
+    public static int lastLevelScore;
 
     static GlobalSettings()
     {
@@ -11,7 +13,8 @@
 
     private static void LoadProfile()
     {
-        //Load Save Here!
+        lastLevelScore = 0;
+        lastLevel = -1;
         money = 0;
         startHealth = 3;
     }

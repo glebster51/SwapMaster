@@ -376,10 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4039143549217138689}
-  - {fileID: 4039143548332957736}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!114 &4039143548248765703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,10 +1053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e842e635e4f2ce448c12172530b77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 4039143548025225775}
-  - {fileID: 4039143547900225207}
-  value: 1
+  changeAlphaSprites: []
+  alpha: 0
 --- !u!114 &4039143549343026567
 MonoBehaviour:
   m_ObjectHideFlags: 0

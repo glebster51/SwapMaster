@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 
 public class GameController : SerializedMonoBehaviour
 {
@@ -14,13 +15,12 @@ public class GameController : SerializedMonoBehaviour
     
     public LevelSettings levelSettings { get; private set; }
 
-    public LevelSettings debugSettings; //DEBUG DEBUG DEBUG
-
     private List<Monster> monsters;
     private List<Monster> patternMonsters;
     private int health;
     private Coroutine spawner;
     private Coroutine gamePauseRoutine;
+    private bool isLevelEnded;
 
     private void Start()
     {
@@ -76,12 +76,8 @@ public class GameController : SerializedMonoBehaviour
 
     public void LoadLevel()
     {
+        isLevelEnded = false;
         GameUnpause();
-        UIManager.HideDeathScreen();
-
-        //debug debug 
-        GlobalSettings.levelSettings = debugSettings;
-        //Debug debug
 
         levelSettings = GlobalSettings.levelSettings;
         if (levelSettings == null)
@@ -106,12 +102,9 @@ public class GameController : SerializedMonoBehaviour
 
     private IEnumerator Spawner()
     {
-        Debug.Log("spawner enabled");
         if (levelSettings == null) yield break;
         if (levelSettings.waves == null) yield break;
         if (levelSettings.waves.Count == 0) yield break;
-
-        Debug.Log("spawner checked");
 
         yield return new WaitForSeconds(levelSettings.delayBeforeWaves);
 
@@ -148,8 +141,7 @@ public class GameController : SerializedMonoBehaviour
                 yield return new WaitForSeconds(Random.Range(wave.waveTick.x, wave.waveTick.y));
             }
         }
-
-        Debug.Log("End of level");
+        isLevelEnded = true;
     }
 
     private void Update()
@@ -170,6 +162,21 @@ public class GameController : SerializedMonoBehaviour
             }
             CheckHealth();
         }
+
+        if (isLevelEnded)
+        {
+            if (monsters.Count == 0)
+                EndLevel(true);
+        }
+    }
+
+    public void EndLevel(bool win)
+    {
+        if (win)
+            GlobalSettings.lastLevelScore = 3;
+        else
+            GlobalSettings.lastLevelScore = 0;
+        SceneManager.LoadScene(0);
     }
 
     private void CheckHealth()

@@ -30,4 +30,15 @@ public class UIManager : MonoBehaviour
     {
 
     }
+
+    public void CallLevelRestart()
+    {
+        GameController.instance.LoadLevel();
+        HideDeathScreen();
+    }
+
+    public void CallLevelQuit()
+    {
+        GameController.instance.EndLevel(false);
+    }
 }
