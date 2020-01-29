@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class EnemyController : SerializedMonoBehaviour
+public class GameController : SerializedMonoBehaviour
 {
-    public static EnemyController instance { get; private set; }
+    public static GameController instance { get; private set; }
 
     [SerializeField] public Vector2 spawnPoint { get; private set; }
     [SerializeField] public float deathY { get; private set; }
 
     [SerializeField] public Transform enemyContainer { get; private set; }
-    [SerializeField] public LevelSettings levelSettings { get; private set; }
+    
+    public LevelSettings levelSettings { get; private set; }
+
+    public LevelSettings debugSettings; //DEBUG DEBUG DEBUG
 
     private List<Monster> monsters;
     private List<Monster> patternMonsters;
+    private int health;
 
     private void Start()
     {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
+        //debug debug 
+        GlobalSettings.levelSettings = debugSettings; //Debug debug
+        levelSettings = GlobalSettings.levelSettings;
+        if (levelSettings == null)
+            throw new System.Exception("Настройки где блять, мудила?");
 
         monsters = new List<Monster>();
         patternMonsters = new List<Monster>();
+
+        LoadLevel();
         StartCoroutine(Spawner());
     }
 
@@ -70,7 +81,14 @@ public class EnemyController : SerializedMonoBehaviour
         }
     }
 
-    //хуйня
+    private void LoadLevel()
+    {
+        health = GlobalSettings.startHealth;
+        UIManager.SetHealth(health);
+
+        InputManager.EnableInput(true);
+    }
+
     private IEnumerator Spawner()
     {
         if (levelSettings == null) yield break;
@@ -130,8 +148,30 @@ public class EnemyController : SerializedMonoBehaviour
                 if (patternMonsters.Contains(item))
                     patternMonsters.Remove(item);
                 item.Die();
+                health--;
             }
+            CheckHealth();
         }
+    }
+
+    private void CheckHealth()
+    {
+        if (health <= 0)
+        {
+            InputManager.EnableInput(false);
+            StartCoroutine(GamePause());
+            UIManager.ShowDeathScreen();
+        }
+    }
+
+    private IEnumerator GamePause()
+    {
+        while (Time.timeScale >= 0.001)
+        {
+            Time.timeScale -= 2f * Time.deltaTime;
+            yield return null;
+        }
+        Time.timeScale = 0;
     }
 
 #if UNITY_EDITOR

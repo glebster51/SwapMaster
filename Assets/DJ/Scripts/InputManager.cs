@@ -6,6 +6,8 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance { get; private set; }
 
+    public static bool handleInput { get; private set; }
+
     private void Start()
     {
         if (instance == null) instance = this;
@@ -14,9 +16,17 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) EnemyController.GetInput(ArrowDirection.Left);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) EnemyController.GetInput(ArrowDirection.Right);
-        if (Input.GetKeyDown(KeyCode.UpArrow)) EnemyController.GetInput(ArrowDirection.Up);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) EnemyController.GetInput(ArrowDirection.Down);
+        if (handleInput)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) GameController.GetInput(ArrowDirection.Left);
+            if (Input.GetKeyDown(KeyCode.RightArrow)) GameController.GetInput(ArrowDirection.Right);
+            if (Input.GetKeyDown(KeyCode.UpArrow)) GameController.GetInput(ArrowDirection.Up);
+            if (Input.GetKeyDown(KeyCode.DownArrow)) GameController.GetInput(ArrowDirection.Down);
+        }
+    }
+
+    public static void EnableInput(bool enabled)
+    {
+        handleInput = enabled;
     }
 }
