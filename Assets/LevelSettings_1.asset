@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d1c0aac2d53ce4da148d13493bafa9, type: 3}
+  m_Name: LevelSettings_1
+  m_EditorClassIdentifier: 
+  delayBeforeWaves: 1.5
+  waves:
+  - delayAfterWave: {x: 0, y: 0}
+    waveDuration: {x: 1000, y: 1200}
+    waveTick: {x: 1.5, y: 2}
+    enemies:
+    - enemyPrefab: {fileID: 5950423217185304334, guid: 0698450d18ddc414db39af52fc807a96,
+        type: 3}
+      weight: 40
+      realWeight: 0.16666667
+    - enemyPrefab: {fileID: 4039143549195687132, guid: 0bb494079a6e431469510a2c0395018d,
+        type: 3}
+      weight: 40
+      realWeight: 0.16666667
+    - enemyPrefab: {fileID: 9018045986670217130, guid: 769648d2f70d5714bb533f8c66dd856e,
+        type: 3}
+      weight: 40
+      realWeight: 0.16666667
+    - enemyPrefab: {fileID: 7021516281631008456, guid: e063de2f550ea8c49a886a9264032da0,
+        type: 3}
+      weight: 40
+      realWeight: 0.16666667
+    - enemyPrefab: {fileID: 6420453801409324839, guid: 6b1a4fcdea343fe4591730406d6f4b3d,
+        type: 3}
+      weight: 40
+      realWeight: 0.16666667
+    - enemyPrefab: {fileID: 6420453801409324839, guid: 27a817b0e6bd2834cb0ae0271d2eb6a1,
+        type: 3}
+      weight: 40
+      realWeight: 0.16666667
