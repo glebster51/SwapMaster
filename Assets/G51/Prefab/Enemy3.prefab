@@ -41,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2671857817514657017}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef733990d27b97439b6fcd8093d3f63, type: 3}
   m_Name: 
@@ -221,7 +221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9018045986670217140}
   - component: {fileID: 4317072327367373299}
-  - component: {fileID: 9018045986670217131}
   - component: {fileID: 3849638129589527157}
   m_Layer: 0
   m_Name: Enemy3
@@ -280,25 +279,6 @@ MonoBehaviour:
       Entry: 4
       Data: 2
   padding: 0.8
---- !u!114 &9018045986670217131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9018045986670217130}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c09688a3fb02c54fb1abbc135063039, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alive: 0
-  swaps: 000000000000000000000000
-  crystals:
-  - {fileID: 9018045987224526763}
-  - {fileID: 9018045988320432608}
-  - {fileID: 9018045987919092816}
-  arrow: {fileID: 9018045987124113875}
 --- !u!95 &3849638129589527157
 Animator:
   serializedVersion: 3
@@ -1515,11 +1495,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4290284192885722537}
     m_Modifications:
-    - target: {fileID: 4224659156753455052, guid: 889dbb068665b964c99c46458f1ac78d,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 4224659156753455054, guid: 889dbb068665b964c99c46458f1ac78d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1575,6 +1550,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4224659156753455052, guid: 889dbb068665b964c99c46458f1ac78d,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889dbb068665b964c99c46458f1ac78d, type: 3}
 --- !u!4 &4223864463631286629 stripped
@@ -1590,11 +1570,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4290284192885722537}
     m_Modifications:
-    - target: {fileID: 4224659156753455052, guid: 889dbb068665b964c99c46458f1ac78d,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 4224659156753455054, guid: 889dbb068665b964c99c46458f1ac78d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1650,6 +1625,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4224659156753455052, guid: 889dbb068665b964c99c46458f1ac78d,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889dbb068665b964c99c46458f1ac78d, type: 3}
 --- !u!4 &4267842134450863405 stripped
@@ -1665,11 +1645,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4290284192885722537}
     m_Modifications:
-    - target: {fileID: 4224659156753455052, guid: 889dbb068665b964c99c46458f1ac78d,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4224659156753455054, guid: 889dbb068665b964c99c46458f1ac78d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1724,6 +1699,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224659156753455052, guid: 889dbb068665b964c99c46458f1ac78d,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889dbb068665b964c99c46458f1ac78d, type: 3}
