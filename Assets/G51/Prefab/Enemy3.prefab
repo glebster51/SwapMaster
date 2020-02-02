@@ -268,6 +268,9 @@ MonoBehaviour:
   onGetDamage:
     m_PersistentCalls:
       m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &3849638129589527157
 Animator:
   serializedVersion: 3

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using System.Threading.Tasks;
 
 public class Monster : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         progress = 0;
+        onDeath.AddListener(DeathAnimationCallback);
         anim = GetComponent<Animator>();
         arrows = arrowsContainer.GetComponentsInChildren<Arrow>(true);
         pattern = new ArrowDirection[arrows.Length];
@@ -52,7 +54,13 @@ public class Monster : MonoBehaviour
         if (onDeath != null)
             onDeath.Invoke();
         else
-            Destroy(gameObject, 1f);
+            DeathAnimationCallback();
+    }
+
+    private void DeathAnimationCallback()
+    {
+        Debug.Log("callback");
+        Destroy(gameObject, 1f);
     }
 
     public void ResetProgress()
