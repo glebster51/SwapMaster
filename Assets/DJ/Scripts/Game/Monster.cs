@@ -11,6 +11,7 @@ public class Monster : MonoBehaviour
 
     public float moveSpeed;
     public UnityEvent onGetDamage;
+    public UnityEvent onDeath;
 
     public int progress { get; protected set; }
     public ArrowDirection nextDirection { get; protected set; }
@@ -31,6 +32,7 @@ public class Monster : MonoBehaviour
 
     public bool AddProgress()
     {
+        //Пересмотреть
         arrows[progress].AnimatePressed();
         if (onGetDamage != null)
             onGetDamage.Invoke();
@@ -46,8 +48,11 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
-        anim.SetBool("alive", false);
-        Destroy(gameObject, 1f);
+        //Переписать
+        if (onDeath != null)
+            onDeath.Invoke();
+        else
+            Destroy(gameObject, 1f);
     }
 
     public void ResetProgress()
