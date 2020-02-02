@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
-public class Monster : SerializedMonoBehaviour
+public class Monster : MonoBehaviour
 {
-    [FoldoutGroup("Arrows"), SerializeField] public Transform arrowsContainer { get; protected set; }
+    [FoldoutGroup("Arrows"), SerializeField] private Transform arrowsContainer;
     [FoldoutGroup("Arrows")] public float padding;
 
-    [SerializeField] public float moveSpeed { get; protected set; }
+    public float moveSpeed;
+    public UnityEvent onGetDamage;
 
     public int progress { get; protected set; }
     public ArrowDirection nextDirection { get; protected set; }
@@ -30,7 +32,9 @@ public class Monster : SerializedMonoBehaviour
     public bool AddProgress()
     {
         arrows[progress].AnimatePressed();
-        anim.SetTrigger("GetDMG");
+        if (onGetDamage != null)
+            onGetDamage.Invoke();
+        //anim.SetTrigger("GetDMG");
 
         progress++;
         if (progress >= pattern.Length)

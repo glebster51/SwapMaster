@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d1c0aac2d53ce4da148d13493bafa9, type: 3}
   m_Name: LevelSettings_1
   m_EditorClassIdentifier: 
-  delayBeforeWaves: 0.5
   waves:
-  - delayAfterWave: {x: 0, y: 0}
+  - delayBeforeWave: {x: 0.5, y: 0.5}
     waveDuration: {x: 10, y: 15}
     waveTick: {x: 1.5, y: 2}
     enemies:

@@ -30,21 +30,20 @@ public class GameController : SerializedMonoBehaviour
         LoadLevel();
     }
 
-    public static void GetInput(ArrowDirection dir)
+    public static void GetInput(ArrowDirection dir, bool recursed = false)
     {
         List<Monster> remove = new List<Monster>();
         bool monsterDied = false;
+        bool mistake = true;
 
         if (instance.patternMonsters.Count <= 0)
-        {
-            foreach (Monster item in instance.monsters)
-                instance.patternMonsters.Add(item);
-        }
+            instance.RecreatePatternMonstersList();
 
         foreach (Monster monster in instance.patternMonsters)
         {
             if (monster.nextDirection == dir)
             {
+                mistake = false;
                 if (monster.AddProgress())
                 {
                     instance.monsters.Remove(monster);
@@ -61,17 +60,28 @@ public class GameController : SerializedMonoBehaviour
             }
         }
 
-        if (monsterDied)
+        if (mistake)
         {
-            instance.patternMonsters = new List<Monster>();
-            foreach (Monster item in instance.monsters)
-                instance.patternMonsters.Add(item);
+            instance.RecreatePatternMonstersList();
+            if (!recursed)
+                GetInput(dir, true);
+        }
+        else if (monsterDied)
+        {
+            instance.RecreatePatternMonstersList();
         }
         else if (remove.Count > 0)
         {
             foreach (Monster item in remove)
                 instance.patternMonsters.Remove(item);
         }
+    }
+
+    private void RecreatePatternMonstersList()
+    {
+        patternMonsters = new List<Monster>();
+        foreach (Monster item in monsters)
+            patternMonsters.Add(item);
     }
 
     public void LoadLevel()
@@ -106,8 +116,6 @@ public class GameController : SerializedMonoBehaviour
         if (levelSettings.waves == null) yield break;
         if (levelSettings.waves.Count == 0) yield break;
 
-        yield return new WaitForSeconds(levelSettings.delayBeforeWaves);
-
         float fullWeight = 0;
         foreach (Wave wave in levelSettings.waves)
             foreach (WaveEnemy waveEnemy in wave.enemies)
@@ -123,7 +131,11 @@ public class GameController : SerializedMonoBehaviour
         for (int i = 0; i < waveCount; i++)
         {
             Wave wave = levelSettings.waves[i];
+
+            yield return new WaitForSeconds(Random.Range(wave.delayBeforeWave.x, wave.delayBeforeWave.y));
+
             float endTime = Time.time + Random.Range(wave.waveDuration.x, wave.waveDuration.y);
+
             while (Time.time < endTime)
             {
                 float rand = Random.value;

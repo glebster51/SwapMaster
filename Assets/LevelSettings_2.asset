@@ -12,21 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d1c0aac2d53ce4da148d13493bafa9, type: 3}
   m_Name: LevelSettings_2
   m_EditorClassIdentifier: 
-  delayBeforeWaves: 0.5
   waves:
-  - delayAfterWave: {x: 0, y: 0}
+  - delayBeforeWave: {x: 0.5, y: 0.5}
     waveDuration: {x: 10, y: 15}
     waveTick: {x: 1.5, y: 2}
     enemies:
     - enemyPrefab: {fileID: 7021516281631008456, guid: e063de2f550ea8c49a886a9264032da0,
         type: 3}
       weight: 40
-      realWeight: 0.16666667
+      realWeight: 0.33333334
     - enemyPrefab: {fileID: 6420453801409324839, guid: 6b1a4fcdea343fe4591730406d6f4b3d,
         type: 3}
       weight: 40
-      realWeight: 0.16666667
+      realWeight: 0.33333334
     - enemyPrefab: {fileID: 6420453801409324839, guid: 27a817b0e6bd2834cb0ae0271d2eb6a1,
         type: 3}
       weight: 40
-      realWeight: 0.16666667
+      realWeight: 0.33333334
