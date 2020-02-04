@@ -20,12 +20,12 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 5950423217185304334, guid: 0698450d18ddc414db39af52fc807a96,
         type: 3}
       weight: 40
-      realWeight: 0.16666667
-    - enemyPrefab: {fileID: 4039143549195687132, guid: 0bb494079a6e431469510a2c0395018d,
+      realWeight: 0.33333334
+    - enemyPrefab: {fileID: 5950423217185304334, guid: 0698450d18ddc414db39af52fc807a96,
         type: 3}
       weight: 40
-      realWeight: 0.16666667
-    - enemyPrefab: {fileID: 9018045986670217130, guid: 769648d2f70d5714bb533f8c66dd856e,
+      realWeight: 0.33333334
+    - enemyPrefab: {fileID: 5950423217185304334, guid: 0698450d18ddc414db39af52fc807a96,
         type: 3}
       weight: 40
-      realWeight: 0.16666667
+      realWeight: 0.33333334
