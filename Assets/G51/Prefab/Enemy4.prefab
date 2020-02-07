@@ -1097,12 +1097,7 @@ MonoBehaviour:
   arrowsContainer: {fileID: 2872663719279340747}
   padding: 0.8
   moveSpeed: 2
-  onGetDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
+  alive: 0
 --- !u!95 &2971055976638759703
 Animator:
   serializedVersion: 3

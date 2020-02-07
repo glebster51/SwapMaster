@@ -11,11 +11,11 @@ public class Monster : MonoBehaviour
     [FoldoutGroup("Arrows")] public float padding;
 
     public float moveSpeed;
-    public UnityEvent onGetDamage;
-    public UnityEvent onDeath;
 
     public int progress { get; protected set; }
     public ArrowDirection nextDirection { get; protected set; }
+
+    [HideInInspector] public bool alive = false;
 
     protected Arrow[] arrows;
     protected ArrowDirection[] pattern;
@@ -24,7 +24,6 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         progress = 0;
-        onDeath.AddListener(DeathAnimationCallback);
         anim = GetComponent<Animator>();
         arrows = arrowsContainer.GetComponentsInChildren<Arrow>(true);
         pattern = new ArrowDirection[arrows.Length];
@@ -34,11 +33,8 @@ public class Monster : MonoBehaviour
 
     public bool AddProgress()
     {
-        //Пересмотреть
         arrows[progress].AnimatePressed();
-        if (onGetDamage != null)
-            onGetDamage.Invoke();
-        //anim.SetTrigger("GetDMG");
+        anim.SetTrigger("GetDMG");
 
         progress++;
         if (progress >= pattern.Length)
@@ -50,16 +46,7 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
-        //Переписать
-        if (onDeath != null)
-            onDeath.Invoke();
-        else
-            DeathAnimationCallback();
-    }
-
-    private void DeathAnimationCallback()
-    {
-        Debug.Log("callback");
+        anim.SetBool("alive", false);
         Destroy(gameObject, 1f);
     }
 
