@@ -8,26 +8,24 @@ public class WorldmapLevel : MonoBehaviour
     [FoldoutGroup("Collision")] public Vector2 offset;
     [FoldoutGroup("Collision")] public float radius;
 
-    public WorldmapLevelCrystal[] crystals;
-
     public LevelSettings levelSettings;
     public LevelType levelType;
     public int healthOnLevel;
 
     public Vector2 colliderPosition { get; private set; }
     public int score { get; private set; }
-    
+
+    private LevelPinGraphic pin;
+
     public void SetScore(int value)
     {
         score = value;
-        if (score > crystals.Length) score = crystals.Length;
-
-        for (int i = 0; i < crystals.Length; i++)
-            crystals[i].SetValue(i < score ? 1 : 0);
+        pin.SetStars(value);
     }
 
     private void Awake()
     {
+        pin = GetComponentInChildren<LevelPinGraphic>();
         colliderPosition = transform.position;
         colliderPosition += offset;
     }

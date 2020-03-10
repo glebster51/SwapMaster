@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using System.Threading.Tasks;
 
-public class Monster : SerializedMonoBehaviour
+public class Monster : MonoBehaviour
 {
-    [FoldoutGroup("Arrows"), SerializeField] public Transform arrowsContainer { get; protected set; }
+    [FoldoutGroup("Arrows"), SerializeField] private Transform arrowsContainer;
     [FoldoutGroup("Arrows")] public float padding;
 
-    [SerializeField] public float moveSpeed { get; protected set; }
+    public float moveSpeed;
 
     public int progress { get; protected set; }
     public ArrowDirection nextDirection { get; protected set; }
+
+    [HideInInspector] public bool alive = false;
 
     protected Arrow[] arrows;
     protected ArrowDirection[] pattern;

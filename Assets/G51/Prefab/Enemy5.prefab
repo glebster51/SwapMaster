@@ -1092,23 +1092,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1afdd05791f12a498d6ccb6e41a36bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 2285197490724531492}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: arrowsContainer
-      Entry: 10
-      Data: 0
-    - Name: moveSpeed
-      Entry: 4
-      Data: 2
+  arrowsContainer: {fileID: 2285197490724531492}
   padding: 0.8
+  moveSpeed: 2
+  alive: 0
 --- !u!95 &1247541932912607992
 Animator:
   serializedVersion: 3

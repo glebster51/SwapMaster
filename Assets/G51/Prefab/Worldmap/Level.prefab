@@ -5339,12 +5339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39c6167ccf5b314bba1b8b71fddcf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0}
-  radius: 1.62
-  crystals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  offset: {x: 0, y: 0.84}
+  radius: 1.31
   levelSettings: {fileID: 11400000, guid: 247e76825ca1eee43b36a1875c61c06d, type: 2}
   levelType: 1
   healthOnLevel: 1
