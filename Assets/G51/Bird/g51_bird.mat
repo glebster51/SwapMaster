@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: g51_bird
+  m_Shader: {fileID: 4800000, guid: 2221beb82abdad049984cf875ca523da, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: c5ec7c18725735e48bcd59f42d0deb0c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Float0: 1
+    - _Float1: 0.2
+    - _Float2: 0
+    - _MaskTest: 0
+    - _MaskX: 0.25
+    - _RotatewElipse: -0.35
+    - _SizeMask: 0.3
+    - _Speed: 3
+    - _TimeOffsetByMask: 0.05
+    - _X_Force: 0.8
+    - _Y_Force: 0.56
+    - _Z_Force: 0.1
+    - __dirty: 0
+    - _add: 0.5
+    - _mult: 0.28
+    m_Colors:
+    - _FallOffset: {r: -0.35, g: 0.07, b: -0.7, a: 0}
+    - _Vector0: {r: -0.35, g: 0.07, b: -0.7, a: 0}
